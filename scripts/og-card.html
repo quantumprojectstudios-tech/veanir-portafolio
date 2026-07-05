@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width: 1200px; height: 630px;
+    background: linear-gradient(135deg, #042442 0%, #06385D 55%, #021323 100%);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  .grid {
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(125,255,247,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125,255,247,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, black 30%, transparent 85%);
+  }
+  .glow {
+    position:absolute; width:700px; height:700px; border-radius:50%;
+    background: #0AC0C9; opacity:0.25; filter: blur(120px);
+    top:-220px; right:-180px;
+  }
+  .content {
+    position:relative; z-index:2;
+    height:100%;
+    display:flex; align-items:center;
+    padding: 0 80px;
+  }
+  .text { max-width: 620px; }
+  .eyebrow {
+    font-family:'Space Grotesk', sans-serif;
+    text-transform:uppercase; letter-spacing:0.3em;
+    font-size:18px; color:#0AC0C9; margin-bottom:22px;
+  }
+  h1 {
+    font-family:'Space Grotesk', sans-serif;
+    font-size:74px; font-weight:700; color:#fff; line-height:1.05; margin-bottom:22px;
+  }
+  h1 span { color:#7DFFF7; }
+  p { font-size:24px; color:#a9c2cf; line-height:1.5; }
+  .gem-wrap { position:absolute; right:120px; top:50%; transform:translateY(-50%); perspective:900px; }
+  .gem { position:relative; width:220px; height:240px; transform-style:preserve-3d; }
+  .half { position:absolute; top:50%; left:50%; width:0; height:0; transform-style:preserve-3d; }
+  .half.top { transform: translateY(-106.5px) rotateX(-16deg) rotateY(25deg); }
+  .half.bottom { transform: translateY(106.5px) rotateX(164deg) rotateY(25deg); }
+  .facet {
+    position:absolute; top:0; left:0; width:0; height:0;
+    border-left:60px solid transparent; border-right:60px solid transparent;
+    border-bottom:130px solid var(--c);
+    transform-origin:50% 0%;
+    opacity:0.92;
+  }
+  .half.bottom .facet { filter:brightness(0.6); opacity:0.85; }
+  .facet:nth-child(1){ transform: rotateY(0deg) rotateX(35deg); --c:#7DFFF7; }
+  .facet:nth-child(2){ transform: rotateY(90deg) rotateX(35deg); --c:#0AC0C9; }
+  .facet:nth-child(3){ transform: rotateY(180deg) rotateX(35deg); --c:#005075; }
+  .facet:nth-child(4){ transform: rotateY(270deg) rotateX(35deg); --c:#0AC0C9; }
+  .wordmark {
+    position:absolute; left:80px; bottom:56px;
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:28px; letter-spacing:0.08em; color:#fff;
+  }
+  .wordmark span { color:#0AC0C9; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="text">
+      <div class="eyebrow">3D Modeler &amp; Artist</div>
+      <h1>Crafting worlds<br/>in <span>polygons.</span></h1>
+      <p>Characters, props &amp; environments in Maya, Blender &amp; Substance Painter.</p>
+    </div>
+  </div>
+  <div class="gem-wrap">
+    <div class="gem">
+      <div class="half top">
+        <span class="facet"></span><span class="facet"></span><span class="facet"></span><span class="facet"></span>
+      </div>
+      <div class="half bottom">
+        <span class="facet"></span><span class="facet"></span><span class="facet"></span><span class="facet"></span>
+      </div>
+    </div>
+  </div>
+  <div class="wordmark">VAENIR<span>.</span></div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700">
+  <defs>
+    <linearGradient id="pbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#06385D"/>
+      <stop offset="1" stop-color="#042442"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.38" r="0.55">
+      <stop offset="0" stop-color="#0AC0C9" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#0AC0C9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="700" fill="url(#pbg)"/>
+  <rect width="600" height="700" fill="url(#glow)"/>
+  <g stroke="#0AC0C9" stroke-opacity="0.5" stroke-width="1.4" fill="none">
+    <circle cx="300" cy="290" r="120"/>
+    <path d="M120 640 C120 480 480 480 480 640" />
+    <path d="M180 290 a120 120 0 0 1 240 0" stroke-dasharray="6 10"/>
+  </g>
+  <g fill="#7DFFF7" fill-opacity="0.9">
+    <circle cx="300" cy="290" r="3"/>
+    <circle cx="220" cy="240" r="2"/>
+    <circle cx="380" cy="250" r="2"/>
+    <circle cx="300" cy="180" r="2"/>
+  </g>
+  <text x="300" y="292" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="54" fill="#7DFFF7" fill-opacity="0.85">V</text>
+</svg>
