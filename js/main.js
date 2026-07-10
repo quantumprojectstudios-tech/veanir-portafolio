@@ -125,16 +125,45 @@
 
   /* ---------- Lightbox ---------- */
   const lightbox = document.getElementById("lightbox");
+  const lightboxMedia = document.querySelector(".lightbox__media");
   const lightboxImg = document.getElementById("lightboxImg");
   const lightboxCat = document.getElementById("lightboxCat");
   const lightboxTitle = document.getElementById("lightboxTitle");
   const lightboxDesc = document.getElementById("lightboxDesc");
+  const lightboxPrev = document.getElementById("lightboxPrev");
+  const lightboxNext = document.getElementById("lightboxNext");
+  const lightboxDots = document.getElementById("lightboxDots");
   let lastFocused = null;
+  let galleryImages = [];
+  let galleryIndex = 0;
+  let galleryAlt = "";
+
+  const renderGalleryImage = () => {
+    lightboxImg.src = galleryImages[galleryIndex];
+    lightboxImg.alt = `${galleryAlt} (${galleryIndex + 1} of ${galleryImages.length})`;
+    lightboxDots.querySelectorAll(".lightbox__dot").forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === galleryIndex);
+    });
+  };
+
+  const showGalleryImage = (index) => {
+    galleryIndex = (index + galleryImages.length) % galleryImages.length;
+    renderGalleryImage();
+  };
 
   const openLightbox = (trigger) => {
     const img = trigger.querySelector("img");
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
+    const imagesAttr = trigger.dataset.images;
+    galleryImages = imagesAttr ? imagesAttr.split(",").map((s) => s.trim()) : [img.src];
+    galleryAlt = img.alt;
+    galleryIndex = 0;
+
+    lightboxMedia.classList.toggle("has-multiple", galleryImages.length > 1);
+    lightboxDots.innerHTML = galleryImages
+      .map((_, i) => `<button type="button" class="lightbox__dot" data-index="${i}" aria-label="Image ${i + 1}"></button>`)
+      .join("");
+    renderGalleryImage();
+
     lightboxCat.textContent = trigger.dataset.categoryLabel || "";
     lightboxTitle.textContent = trigger.dataset.title || "";
     lightboxDesc.textContent = trigger.dataset.desc || "";
@@ -156,8 +185,17 @@
     trigger.addEventListener("click", () => openLightbox(trigger));
   });
   lightbox.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closeLightbox));
+  lightboxPrev.addEventListener("click", () => showGalleryImage(galleryIndex - 1));
+  lightboxNext.addEventListener("click", () => showGalleryImage(galleryIndex + 1));
+  lightboxDots.addEventListener("click", (e) => {
+    const dot = e.target.closest(".lightbox__dot");
+    if (dot) showGalleryImage(Number(dot.dataset.index));
+  });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    if (!lightbox.classList.contains("is-open")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft" && galleryImages.length > 1) showGalleryImage(galleryIndex - 1);
+    if (e.key === "ArrowRight" && galleryImages.length > 1) showGalleryImage(galleryIndex + 1);
   });
 
   /* ---------- Magnetic buttons ---------- */

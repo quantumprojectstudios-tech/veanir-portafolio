@@ -142,6 +142,7 @@
 
         <div class="work__filters reveal" role="tablist" aria-label="Filter work by category">
           <button class="filter-btn is-active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="character">Characters</button>
           <button class="filter-btn" data-filter="prop">Props</button>
           <button class="filter-btn" data-filter="nature">Nature</button>
           <button class="filter-btn" data-filter="furniture">Furniture</button>
@@ -149,6 +150,17 @@
         </div>
 
         <div class="work__grid" id="workGrid">
+
+          <article class="work-card reveal" data-category="character">
+            <button class="work-card__trigger" data-title="Stylized Character" data-category-label="Character Design" data-desc="A fully modeled, UV'd and rigged stylized character, shown here in wireframe, clean shaded and colored-UV passes, plus a rig test in a dancing pose." data-images="assets/images/work/10.jpg,assets/images/work/9.jpg,assets/images/work/11.jpg">
+              <img src="assets/images/work/10.jpg" alt="Stylized character — front view wireframe, shaded and UV render" loading="lazy" />
+              <span class="work-card__overlay">
+                <span class="work-card__cat">Character Design</span>
+                <span class="work-card__title">Stylized Character</span>
+                <span class="work-card__view">View Piece →</span>
+              </span>
+            </button>
+          </article>
 
           <article class="work-card reveal" data-category="prop">
             <button class="work-card__trigger" data-title="Backpack Study" data-category-label="Hard-Surface Prop" data-desc="A stylized backpack modeled in Maya with clean quad topology, shown here as a grey-clay turnaround to highlight surface flow before texturing.">
@@ -238,6 +250,70 @@
             </button>
           </article>
 
+          <article class="work-card reveal" data-category="prop">
+            <button class="work-card__trigger" data-title="Salvage Blaster" data-category-label="Game Prop" data-desc="A weathered sci-fi sidearm modeled in Maya and fully hand-painted in Substance Painter, with worn edges and grime built up over the base metal and paint layers.">
+              <img src="assets/images/work/Gun.png" alt="Salvage Blaster — weathered sci-fi weapon prop render" loading="lazy" />
+              <span class="work-card__overlay">
+                <span class="work-card__cat">Game Prop</span>
+                <span class="work-card__title">Salvage Blaster</span>
+                <span class="work-card__view">View Piece →</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="work-card reveal" data-category="prop">
+            <button class="work-card__trigger" data-title="Health Pickup" data-category-label="Game Prop" data-desc="A stylized health pickup canister built for readability at a glance, with hazard-yellow accents and a fully hand-painted rust and metal texture pass.">
+              <img src="assets/images/work/Health_Pickup.png" alt="Health pickup — stylized game item render" loading="lazy" />
+              <span class="work-card__overlay">
+                <span class="work-card__cat">Game Prop</span>
+                <span class="work-card__title">Health Pickup</span>
+                <span class="work-card__view">View Piece →</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="work-card reveal" data-category="environment">
+            <button class="work-card__trigger" data-title="Wooden Fence" data-category-label="Environment" data-desc="A modular wooden fence piece, modeled and textured for quick reuse across outdoor environment set dressing.">
+              <img src="assets/images/work/SP_Fence_S.png" alt="Wooden fence — modular environment prop render" loading="lazy" />
+              <span class="work-card__overlay">
+                <span class="work-card__cat">Environment</span>
+                <span class="work-card__title">Wooden Fence</span>
+                <span class="work-card__view">View Piece →</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="work-card reveal" data-category="nature">
+            <button class="work-card__trigger" data-title="Hand-Painted Textures" data-category-label="Texture Art" data-desc="A set of tileable materials hand-painted in Procreate and Photoshop — foliage, flowers, weeds, dirt and rock — used to texture the nature and environment pieces in this gallery." data-images="assets/images/work/Grass.png,assets/images/work/Bush.png,assets/images/work/Flowers.png,assets/images/work/Weeds.png,assets/images/work/Dirt.png,assets/images/work/Rock.png,assets/images/work/SP_Grass01_T.jpg">
+              <img src="assets/images/work/Grass.png" alt="Hand-painted tileable grass texture" loading="lazy" />
+              <span class="work-card__overlay">
+                <span class="work-card__cat">Texture Art</span>
+                <span class="work-card__title">Hand-Painted Textures</span>
+                <span class="work-card__view">View Piece →</span>
+              </span>
+            </button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPSTONE SHOWCASE -->
+    <section class="showcase" id="showcase">
+      <div class="container">
+        <p class="eyebrow reveal">Capstone Project</p>
+        <h2 class="section-title reveal">All the props, together in-engine.</h2>
+        <p class="reveal showcase__lead">
+          A walkthrough of my capstone project — the dome shelter, foliage, rocks and props
+          from this gallery, all built and placed inside the game engine to see how they read
+          together in a finished scene.
+        </p>
+        <div class="showcase__video reveal">
+          <video controls preload="none" poster="assets/images/work/capstone-poster.jpg" playsinline>
+            <source src="assets/images/work/capstone-showcase.mp4" type="video/mp4" />
+            Your browser doesn't support embedded video.
+            <a href="assets/images/work/capstone-showcase.mp4">Download the video</a> instead.
+          </video>
         </div>
       </div>
     </section>
@@ -405,7 +481,12 @@
     <div class="lightbox__backdrop" data-close></div>
     <div class="lightbox__panel" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
       <button class="lightbox__close" data-close aria-label="Close">&times;</button>
-      <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+      <div class="lightbox__media">
+        <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+        <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image">&#10094;</button>
+        <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next image">&#10095;</button>
+        <div class="lightbox__dots" id="lightboxDots"></div>
+      </div>
       <div class="lightbox__info">
         <span class="lightbox__cat" id="lightboxCat"></span>
         <h3 id="lightboxTitle"></h3>

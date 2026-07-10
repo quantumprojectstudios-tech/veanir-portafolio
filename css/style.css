@@ -463,6 +463,23 @@ section { position: relative; padding: 60px 0; }
 .work-card__title { font-family: var(--font-head); font-size: 1.15rem; color: #fff; font-weight: 600; }
 .work-card__view { font-size: 0.8rem; color: var(--electric-blue); margin-top: 8px; }
 
+/* ============ Showcase ============ */
+.showcase__lead { max-width: 640px; }
+.showcase__video {
+  margin-top: 32px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+.showcase__video video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: #000;
+}
+
 /* ============ About ============ */
 .about__inner {
   display: grid;
@@ -678,7 +695,49 @@ section { position: relative; padding: 60px 0; }
   transition: transform 0.4s var(--ease);
 }
 .lightbox.is-open .lightbox__panel { transform: translateY(0) scale(1); }
+.lightbox__media { position: relative; background: #000; }
 .lightbox__img { width: 100%; display: block; }
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(4, 36, 66, 0.65);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, border-color 0.25s;
+  z-index: 2;
+}
+.lightbox__nav:hover { background: rgba(10, 192, 201, 0.35); border-color: var(--bold-cyan); }
+.lightbox__nav--prev { left: 14px; }
+.lightbox__nav--next { right: 14px; }
+.lightbox__media.has-multiple .lightbox__nav { display: flex; }
+.lightbox__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: none;
+  gap: 8px;
+  z-index: 2;
+}
+.lightbox__media.has-multiple .lightbox__dots { display: flex; }
+.lightbox__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, transform 0.25s;
+}
+.lightbox__dot.is-active { background: var(--bold-cyan); transform: scale(1.25); }
 .lightbox__close {
   position: absolute;
   top: 14px; right: 14px;
